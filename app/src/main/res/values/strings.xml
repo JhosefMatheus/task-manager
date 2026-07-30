@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Task Manager</string>
+    <string name="add_task_fab_content_description">Adicionar nova tarefa</string>
+    <string name="tab_item_today_tasks_text">Tarefas de hoje</string>
+    <string name="tab_item_tasks_text">Tarefas</string>
+    <string name="top_app_bar_title">Gerenciador de tarefas</string>
+</resources>
