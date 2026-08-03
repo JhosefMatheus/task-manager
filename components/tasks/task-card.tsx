@@ -8,6 +8,7 @@ import { Info } from 'lucide-react-native';
 import { useState } from 'react';
 import { InferSelectModel } from 'drizzle-orm';
 import * as schema from '@/db/schema';
+import { router } from 'expo-router';
 
 interface TaskCardProps {
   task: InferSelectModel<typeof schema.tasks>;
@@ -20,6 +21,13 @@ export function TaskCard({ task }: TaskCardProps) {
     setChecked((checked) => !checked);
   }
 
+  function navigateToTaskDetailsScreen(): void {
+    router.push({
+      pathname: '/task/[id]',
+      params: { id: task.id.toString() },
+    });
+  }
+
   return (
     <Card>
       <CardHeader className="flex-row items-start gap-3">
@@ -30,7 +38,7 @@ export function TaskCard({ task }: TaskCardProps) {
         <Checkbox checked={checked} onCheckedChange={onCheckedChange} />
       </CardHeader>
       <CardFooter className="flex-row justify-end">
-        <Button>
+        <Button onPress={navigateToTaskDetailsScreen}>
           <Icon as={Info} />
           <Text>Details</Text>
         </Button>

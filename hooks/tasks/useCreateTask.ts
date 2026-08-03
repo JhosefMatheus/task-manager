@@ -14,10 +14,9 @@ export function useCreateTask() {
   const create = useCallback(async ({ title, description }: createTaskCallbackProps) => {
     try {
       setLoading(true);
+      setError(null);
 
       const [task] = await database.insert(schema.tasks).values({ title, description }).returning();
-
-      setError(null);
 
       return task;
     } catch (error: any) {

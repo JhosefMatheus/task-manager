@@ -28,7 +28,11 @@ export function TaskList() {
       data={tasks}
       renderItem={({ item }) => <TaskCard task={item} />}
       keyExtractor={(item) => item.id.toString()}
-      ListHeaderComponent={() => <Input placeholder="Search for your task" />}
+      ListHeaderComponent={() => (
+        <View className="bg-background pb-1">
+          <Input placeholder="Search for your task" />
+        </View>
+      )}
       contentContainerStyle={styles.flatListContentContainer}
       ListEmptyComponent={() => (
         <View className="flex h-full flex-col items-center justify-center gap-2 py-4">
@@ -40,6 +44,7 @@ export function TaskList() {
           </Button>
         </View>
       )}
+      stickyHeaderIndices={[0]}
     />
   );
 }
@@ -52,5 +57,6 @@ const styles = StyleSheet.create({
   },
   flatListContentContainer: {
     flexGrow: 1,
+    gap: 5,
   },
 });
